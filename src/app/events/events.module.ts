@@ -5,6 +5,7 @@ import { EventsRoutingModule } from './events-routing.module';
 import { EventCollectionComponent } from './event-collection/event-collection.component';
 import { EventDetailComponent } from './event-detail/event-detail.component';
 import { EventsComponent } from './events.component';
+import { ApiModule } from "../api/api.module";
 
 @NgModule({
   declarations: [
@@ -14,7 +15,8 @@ import { EventsComponent } from './events.component';
   ],
   imports: [
     CommonModule,
-    EventsRoutingModule
+    EventsRoutingModule,
+    ApiModule
   ]
 })
 export class EventsModule {

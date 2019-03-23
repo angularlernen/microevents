@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { EventService } from "../event.service";
+import { Observable } from "rxjs";
+import { MicroEvent } from "../micro-event";
 
 @Component({
   selector: 'app-event-collection',
@@ -7,9 +10,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class EventCollectionComponent implements OnInit {
 
-  constructor() { }
+  events$: Observable<MicroEvent[]>;
+
+  constructor(private _eventService: EventService) { }
 
   ngOnInit() {
+    this.events$ = this._eventService.findAll();
   }
 
 }
