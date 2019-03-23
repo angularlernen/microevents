@@ -7,6 +7,10 @@ const routes: Routes = [
     loadChildren: './events/events.module#EventsModule'
   },
   {
+    path: 'profiles',
+    loadChildren: './profiles/profiles.module#ProfilesModule'
+  },
+  {
     path: '',
     pathMatch: 'full',
     redirectTo: '/events'
