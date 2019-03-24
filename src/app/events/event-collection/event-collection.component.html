@@ -1,8 +1,28 @@
 <p>
   event-collection works!
 </p>
+<div class="row">
+
+  <div class="col-12 col-md-6 col-lg-4 mb-4" *ngFor="let event of events$ | async">
+    <div class="card">
+      <div class="card-header"><small class="text-muted">on {{event.eventDate | date:'shortDate'}} at {{event.eventDate | date:'shortTime'}}</small></div>
+      <img class="card-img-top img-fluid" [src]="event.pictureUrl" alt="Card image cap">
+      <div class="card-body">
+        <h5 class="card-title">{{event.title}}</h5>
+        <p class="card-text">{{event.shortDescription}}</p>
+        <a [routerLink]="event.id" class="btn btn-microevents">View Details</a>
+      </div>
+      <div class="container row">
+        <div class="col" *ngFor="let participant of event.participants">
+          <img [src]="participant.pictureUrl" class="rounded img-fluid" ngbTooltip="{{participant.firstName}} {{participant.lastName}}">
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
 <ul>
-  <li *ngFor="let event of events$ | async">
+  <li >
     <code>
       <pre>
         {{event | json}}

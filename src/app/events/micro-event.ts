@@ -4,7 +4,7 @@ export interface MicroEvent {
   id: number;
   title: string;
   shortDescription: string;
-  eventDate: any;
+  eventDate: Date;
   pictureUrl: string;
   organizerId: number;
   participants: Profile[];

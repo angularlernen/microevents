@@ -49,11 +49,17 @@ export class EventService {
           map((participants: Profile[]) => {
             return {
               ...eventResponse,
-              participants
+              participants,
+              eventDate: EventService.parseIsoDatetime(eventResponse.eventDate)
             } as MicroEvent;
           })
         );
       }), // Observable<MicroEvent>
     );
+  }
+
+  private static parseIsoDatetime(dtstr: string): Date {
+    const dt = dtstr.split(/[: T-]/).map(parseFloat);
+    return new Date(dt[0], dt[1] - 1, dt[2], dt[3] || 0, dt[4] || 0, dt[5] || 0, 0);
   }
 }
