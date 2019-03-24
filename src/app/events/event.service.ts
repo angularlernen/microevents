@@ -1,18 +1,20 @@
 import { Injectable } from '@angular/core';
 import { EventResource } from "../api/event/event.resource";
 import { from, Observable, zip } from "rxjs";
-import { map, mergeMap, toArray } from "rxjs/operators";
+import { map, mergeMap, switchMap, toArray } from "rxjs/operators";
 import { MicroEvent } from "./micro-event";
 import { Profile } from "../profiles/profile";
 import { ProfileService } from "../profiles/profile.service";
 import { EventResponse } from "../api/event/event.response";
+import { CreateEventRequest } from "../api/event/create-event.request";
+import { MeResource } from "../api/me/me.resource";
 
 @Injectable({
   providedIn: 'root'
 })
 export class EventService {
 
-  constructor(private _eventResource: EventResource, private _profileService: ProfileService) { }
+  constructor(private _eventResource: EventResource, private _profileService: ProfileService, private _meResource: MeResource) { }
 
   findAll(): Observable<MicroEvent[]> {
 
@@ -38,6 +40,14 @@ export class EventService {
     return this._toMicroEvent(eventResponse$).pipe(
       toArray()
     );
+  }
+
+  createEvent(createEventRequest: CreateEventRequest): Observable<MicroEvent> {
+    const eventResponse$ = this._meResource.me().pipe(
+      switchMap((me) => this._eventResource.createEvent(createEventRequest, me.id))
+    );
+
+    return this._toMicroEvent(eventResponse$);
   }
 
   private _toMicroEvent(eventResponse$: Observable<EventResponse>): Observable<MicroEvent> {

@@ -8,15 +8,19 @@ import { EventsComponent } from './events.component';
 import { ApiModule } from "../api/api.module";
 import { NgbModule } from "@ng-bootstrap/ng-bootstrap";
 import { SharedModule } from "../shared/shared.module";
+import { EventCreateComponent } from './event-create/event-create.component';
+import { FormsModule } from "@angular/forms";
 
 @NgModule({
   declarations: [
     EventCollectionComponent,
     EventDetailComponent,
-    EventsComponent
+    EventsComponent,
+    EventCreateComponent
   ],
   imports: [
     CommonModule,
+    FormsModule,
     EventsRoutingModule,
     SharedModule,
     NgbModule,

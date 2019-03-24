@@ -3,6 +3,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { EventsComponent } from "./events.component";
 import { EventCollectionComponent } from "./event-collection/event-collection.component";
 import { EventDetailComponent } from "./event-detail/event-detail.component";
+import { EventCreateComponent } from "./event-create/event-create.component";
 
 const routes: Routes = [
   {
@@ -13,6 +14,10 @@ const routes: Routes = [
         path: '',
         pathMatch: 'full',
         component: EventCollectionComponent
+      },
+      {
+        path: 'create',
+        component: EventCreateComponent
       },
       {
         path: ':id',

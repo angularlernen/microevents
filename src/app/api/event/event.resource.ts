@@ -3,6 +3,7 @@ import { HttpClient } from "@angular/common/http";
 import { Observable } from "rxjs";
 import { EventResponse } from "./event.response";
 import { API_BASE_PATH } from "../api-base-path.token";
+import { CreateEventRequest } from "./create-event.request";
 
 
 @Injectable()
@@ -24,5 +25,15 @@ export class EventResource {
 
   findAllByTitle(title: string): Observable<EventResponse[]> {
     return this._http.get<EventResponse[]>(`${this._apiBasePath}${EventResource.RESOURCE_EVENTS}?title_like=${title}`);
+  }
+
+  createEvent(createEventRequest: CreateEventRequest, myProfileId: number): Observable<EventResponse> {
+    return this._http.post<EventResponse>(`${this._apiBasePath}${EventResource.RESOURCE_EVENTS}`, {
+      ...createEventRequest,
+      organizerId: myProfileId,
+      participantIds: [
+        myProfileId
+      ]
+    });
   }
 }

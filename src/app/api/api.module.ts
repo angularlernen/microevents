@@ -4,6 +4,7 @@ import { HttpClientModule } from "@angular/common/http";
 import { EventResource } from "./event/event.resource";
 import { ProfileResource } from "./profile/profile.resource";
 import { API_BASE_PATH } from "./api-base-path.token";
+import { MeResource } from "./me/me.resource";
 
 @NgModule({
   declarations: [],
@@ -20,6 +21,7 @@ export class ApiModule {
       providers: [
         EventResource,
         ProfileResource,
+        MeResource,
         {
           provide: API_BASE_PATH,
           useValue: 'http://localhost:3000'

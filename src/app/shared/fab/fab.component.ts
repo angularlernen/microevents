@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, Input, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 
 @Component({
   selector: 'app-fab',
@@ -8,10 +8,15 @@ import { ChangeDetectionStrategy, Component, Input, OnInit } from '@angular/core
 export class FabComponent implements OnInit {
 
   @Input() tooltip = 'click me';
+  @Output() fabClicked = new EventEmitter<void>();
 
   constructor() { }
 
   ngOnInit() {
+  }
+
+  buttonClicked(): void {
+    this.fabClicked.emit();
   }
 
 }
