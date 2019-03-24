@@ -4,15 +4,18 @@ import { ProfilePictureComponent } from './profile-picture/profile-picture.compo
 import { NgbTooltipModule } from "@ng-bootstrap/ng-bootstrap";
 import { CollectionSearchComponent } from './collection-search/collection-search.component';
 import { FormsModule } from "@angular/forms";
+import { FabComponent } from './fab/fab.component';
 
 @NgModule({
   declarations: [
     ProfilePictureComponent,
-    CollectionSearchComponent
+    CollectionSearchComponent,
+    FabComponent
   ],
   exports: [
     ProfilePictureComponent,
-    CollectionSearchComponent
+    CollectionSearchComponent,
+    FabComponent
   ],
   imports: [
     CommonModule,

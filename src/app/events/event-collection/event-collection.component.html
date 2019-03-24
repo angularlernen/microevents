@@ -19,6 +19,7 @@
           <div *ngFor="let participant of event.participants">
             <app-profile-picture
               [profile]="participant"
+              (profileClicked)="showProfileDetails($event)"
               diameter="40"
               borderWidth="2"
               outerBorderColor="#239907">
@@ -32,4 +33,4 @@
   </div>
 
 </div>
-
+<app-fab tooltip="Add a new Event"></app-fab>
