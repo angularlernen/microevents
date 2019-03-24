@@ -1,3 +1,23 @@
-<p>
-  profile-collection works!
-</p>
+<app-collection-search
+  collectionId="profiles"
+  labelText="Search Profiles by name"
+  buttonLabelText="Search Profiles"
+  (collectionSearch)="searchProfiles($event)">
+</app-collection-search>
+<div class="row">
+
+  <div class="col-12 col-md-6 col-lg-4 mb-4" *ngFor="let profile of profiles$ | async">
+    <div class="card text-center">
+      <div class="card-body">
+        <div class="d-flex justify-content-center mb-4">
+          <app-profile-picture [profile]="profile" diameter="150" borderWidth="8" outerBorderColor="#239907" outerBorderWidth="4"></app-profile-picture>
+        </div>
+        <h5 class="card-title">{{profile.firstName}} {{profile.lastName}}</h5>
+        <p class="card-text">{{profile.description}}</p>
+        <a [routerLink]="profile.id" class="btn btn-microevents">View Details</a>
+      </div>
+    </div>
+  </div>
+
+</div>
+

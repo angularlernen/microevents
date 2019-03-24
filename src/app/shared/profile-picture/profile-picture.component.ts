@@ -13,6 +13,7 @@ export class ProfilePictureComponent implements OnInit {
   @Input() diameter = 100;
   @Input() borderWidth = 4;
   @Input() borderColor = 'white';
+  @Input() outerBorderWidth = 1;
   @Input() outerBorderColor = 'gray';
   @Input() circle = true;
   @Output() profileClicked = new EventEmitter<Profile>();

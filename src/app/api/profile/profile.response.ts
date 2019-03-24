@@ -3,5 +3,6 @@ export interface ProfileResponse {
   gender: string;
   firstName: string;
   lastName: string;
+  description: string;
   pictureUrl: string;
 }
