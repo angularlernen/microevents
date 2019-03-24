@@ -1,3 +1,29 @@
 <p>
   event-collection works!
 </p>
+<div class="row">
+
+  <div class="col-12 col-md-6 col-lg-4 mb-4" *ngFor="let event of events$ | async">
+    <div class="card">
+      <div class="card-header"><small class="text-muted">on {{event.eventDate | date:'shortDate'}} at {{event.eventDate | date:'shortTime'}}</small></div>
+      <img class="card-img-top img-fluid" [src]="event.pictureUrl" alt="Card image cap">
+      <div class="card-body">
+        <h5 class="card-title">{{event.title}}</h5>
+        <div class="d-flex flex-row flex-wrap">
+          <div *ngFor="let participant of event.participants">
+            <app-profile-picture
+              [profile]="participant"
+              diameter="40"
+              borderWidth="2"
+              outerBorderColor="#239907">
+            </app-profile-picture>
+          </div>
+        </div>
+        <p class="card-text">{{event.shortDescription}}</p>
+        <a [routerLink]="event.id" class="btn btn-microevents">View Details</a>
+      </div>
+    </div>
+  </div>
+
+</div>
+
