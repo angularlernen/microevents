@@ -1,11 +1,17 @@
-<p>
-  event-collection works!
-</p>
+<app-collection-search
+  collectionId="events"
+  labelText="Search Events by title"
+  buttonLabelText="Search Events"
+  (collectionSearch)="searchEvents($event)">
+</app-collection-search>
 <div class="row">
 
   <div class="col-12 col-md-6 col-lg-4 mb-4" *ngFor="let event of events$ | async">
     <div class="card">
-      <div class="card-header"><small class="text-muted">on {{event.eventDate | date:'shortDate'}} at {{event.eventDate | date:'shortTime'}}</small></div>
+      <div class="card-header">
+        <small class="text-muted">on {{event.eventDate | date:'shortDate'}}
+          at {{event.eventDate | date:'shortTime'}}</small>
+      </div>
       <img class="card-img-top img-fluid" [src]="event.pictureUrl" alt="Card image cap">
       <div class="card-body">
         <h5 class="card-title">{{event.title}}</h5>

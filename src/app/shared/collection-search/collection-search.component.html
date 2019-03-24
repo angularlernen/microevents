@@ -1,0 +1,12 @@
+<div class="card w-100 my-4 p-4 border-microevents">
+  <form (ngSubmit)="searchClicked()">
+    <div class="row">
+      <div class="col-12 col-sm-9">
+        <input id="searchText" type="text" name="searchText" [placeholder]="labelText" [(ngModel)]="searchText" class="form-control form-control-lg">
+      </div>
+      <div class="col-12 col-sm-3 d-flex mt-3 mt-sm-0 align-items-center">
+        <button type="submit" class="btn btn-microevents form-control form-control-lg w-100">{{buttonLabelText}}</button>
+      </div>
+    </div>
+  </form>
+</div>
