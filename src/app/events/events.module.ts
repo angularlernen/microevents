@@ -7,6 +7,7 @@ import { EventDetailComponent } from './event-detail/event-detail.component';
 import { EventsComponent } from './events.component';
 import { ApiModule } from "../api/api.module";
 import { NgbModule } from "@ng-bootstrap/ng-bootstrap";
+import { SharedModule } from "../shared/shared.module";
 
 @NgModule({
   declarations: [
@@ -17,6 +18,7 @@ import { NgbModule } from "@ng-bootstrap/ng-bootstrap";
   imports: [
     CommonModule,
     EventsRoutingModule,
+    SharedModule,
     NgbModule,
     ApiModule
   ]

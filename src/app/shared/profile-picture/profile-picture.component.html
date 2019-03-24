@@ -1,0 +1,20 @@
+<div
+  [style.width.px]="diameter"
+  [style.height.px]="diameter"
+  [style.backgroundColor]="borderColor"
+  [style.borderRadius.px]="borderRadius"
+  [style.borderColor]="outerBorderColor"
+  (click)="onProfilePictureClick()"
+>
+  <img
+    [src]="profile.pictureUrl"
+    [alt]="fullName"
+    [title]="fullName"
+    [ngbTooltip]="fullName"
+    placement="bottom"
+    [style.borderRadius.px]="borderRadius"
+    [style.width.px]="innerDiameter"
+    [style.height.px]="innerDiameter"
+  >
+</div>
+
