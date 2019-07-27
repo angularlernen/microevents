@@ -17,7 +17,6 @@ export class EventCreateComponent implements OnInit {
   }
 
   createEvent(eventData: CreateEventRequest): void {
-    debugger;
     this._eventService.createEvent(eventData).subscribe();
   }
 

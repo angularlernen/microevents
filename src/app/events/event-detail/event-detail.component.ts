@@ -1,8 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from "@angular/router";
 
+
+import { Observable } from 'rxjs';
+import { MicroEvent } from "../micro-event";
+import { EventService } from "../event.service";
+
 interface RouterParams {
-  id: string;
+  id: number;
 }
 
 @Component({
@@ -12,13 +17,14 @@ interface RouterParams {
 })
 export class EventDetailComponent implements OnInit {
 
-  eventId?: string;
+  event$: Observable<MicroEvent>;
 
-  constructor(private _router: ActivatedRoute) { }
+  constructor(private _route: ActivatedRoute,
+              private _microEventService: EventService) { }
 
   ngOnInit() {
-    this._router.params.subscribe((params: RouterParams) => {
-      this.eventId = params.id;
+    this._route.params.subscribe((params: RouterParams) => {
+      this.event$ = this._microEventService.findById(params.id);
     });
   }
 
